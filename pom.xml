@@ -35,14 +35,14 @@
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
 
-        <!-- Playwright (E2E) -->
+        <!-- Playwright (E2E - körs lokalt för VG, men exkluderas i CI via surefire) -->
         <dependency>
             <groupId>com.microsoft.playwright</groupId>
             <artifactId>playwright</artifactId>
             <version>1.45.0</version>
         </dependency>
 
-        <!-- Devtools -->
+        <!-- Devtools (valfri, bara lokalt) -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
@@ -50,14 +50,14 @@
             <optional>true</optional>
         </dependency>
 
-        <!-- Testing -->
+        <!-- Testing (JUnit 5 + Spring test) -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
 
-        <!-- Mockito -->
+        <!-- Mockito (valfritt, men ok att ha kvar) -->
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
@@ -81,16 +81,14 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
 
-            <!-- Skip E2E tests in CI -->
+            <!-- Viktigt: Exkludera e2e-tester i CI så GitHub Actions blir grön -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <configuration>
-                    <properties>
-                        <configurationParameters>
-                            junit.jupiter.tags.exclude=e2e
-                        </configurationParameters>
-                    </properties>
+                    <excludes>
+                        <exclude>**/e2e/**</exclude>
+                    </excludes>
                 </configuration>
             </plugin>
 
