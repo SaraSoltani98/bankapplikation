@@ -19,7 +19,7 @@ public class BalancePageTest {
                     .launch(new BrowserType.LaunchOptions().setHeadless(true));
 
             Page page = browser.newPage();
-            page.navigate("http://localhost:8080/balance");
+            page.navigate("http://localhost:8083/balance");
 
             page.waitForSelector("#balance");
             String balanceText = page.textContent("#balance");
@@ -35,7 +35,7 @@ public class BalancePageTest {
                     .launch(new BrowserType.LaunchOptions().setHeadless(true));
 
             Page page = browser.newPage();
-            page.navigate("http://localhost:8080/balance");
+            page.navigate("http://localhost:8083/balance");
 
             assertTrue(page.isVisible("h1"));
         }
@@ -48,7 +48,7 @@ public class BalancePageTest {
                     .launch(new BrowserType.LaunchOptions().setHeadless(true));
 
             Page page = browser.newPage();
-            page.navigate("http://localhost:8080/balance");
+            page.navigate("http://localhost:8083/balance");
 
             assertTrue(page.isVisible("#balance"));
         }

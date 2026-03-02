@@ -14,7 +14,7 @@ public class BalanceController {
         this.atmService = atmService;
     }
 
-    @GetMapping("/balance")
+    @GetMapping("/")
     public String balance(Model model) {
         model.addAttribute("balance", atmService.getBalance());
         return "balance";
